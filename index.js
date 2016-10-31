@@ -1,3 +1,3 @@
 
 
-module.exports = require('./libs/TobyBot.js');
+module.exports = require('./lib/toby.js');

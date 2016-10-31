@@ -4,11 +4,11 @@
   "description": "Toby Node.js client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/gafo/toby-node-client.git"
+    "url": "git+https://github.com/toby-cloud/toby-node"
   },
   "author": "Gabriel Garcia",
   "license": "ISC",
@@ -16,5 +16,10 @@
   "dependencies": {
     "mqtt": "^1.14.1",
     "random-id": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "supertest": "^2.0.1"
   }
 }

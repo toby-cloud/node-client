@@ -11,7 +11,7 @@
  *
  */
 
-var tobyBot = require('../libs/TobyBot.js');
+var toby = require('../lib/toby.js');
 
 var botId = process.argv[2];
 var secret = process.argv[3];
@@ -37,7 +37,7 @@ function onMessage() {
   console.log(from,JSON.stringify(message));
 }
 
-var toby = new tobyBot(botId, secret, onConnect, onMessage;
+var toby = new toby.Bot(botId, secret, onConnect, onMessage);
 
 toby.start();
 

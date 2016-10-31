@@ -14,9 +14,9 @@
 // Replace botId and secret with your bot's credentials.
 //
 
-var ClientBot = require('../libs/TobyBot.js');
-var findHashtags = require('../libs/hashtag.js').findHashtags;
-var removeHashtags = require('../libs/hashtag.js').removeHashtags;
+var toby = require('../lib/toby.js');
+var findHashtags = require('../lib/hashtag.js').findHashtags;
+var removeHashtags = require('../lib/hashtag.js').removeHashtags;
 
 var botId = process.argv[2];
 var secret = process.argv[3];
@@ -29,7 +29,7 @@ if (!(botId && secret)) {
 // we successfully connected
 function on_connect() {
   console.log("connected!");
-  client.follow([botId], function() {
+  bot.follow([botId], function() {
     console.log("followed" + botId)
   });
 
@@ -50,12 +50,12 @@ function on_message(from, message) {
       messageType: "TEXT",
       tags: [message.ackTag],
     }
-    //client.send(payload);
+    //bot.send(payload);
   }
 }
 
-var client = new ClientBot(botId, secret, on_connect, on_message);
-client.start();
+var bot = new toby.Bot(botId, secret, on_connect, on_message);
+bot.start();
 
 function startPrompt() {
 
@@ -73,7 +73,7 @@ function startPrompt() {
                ackTag: botId
 		  }
 
-      client.send(payload);
+      bot.send(payload);
     }
     process.stdout.write(">>> ");
   });
