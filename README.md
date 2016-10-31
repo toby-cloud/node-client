@@ -49,6 +49,6 @@ function onMessage(from, message) {
   console.log("message received:", from, message);
 }
 
-var bot = new toby(botId, secret, onConnect, onMessage);
+var bot = new toby.Bot(botId, secret, onConnect, onMessage);
 bot.start();
 ```
