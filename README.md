@@ -3,7 +3,7 @@
 
 > A node.js Toby helper library.
 
-[![NPM](https://nodei.co/npm/toby-node-client.png)](https://nodei.co/npm/toby-node-client/)
+[![NPM](https://nodei.co/npm/toby.png)](https://nodei.co/npm/toby/)
 
 ## Installation
 
@@ -11,7 +11,7 @@ The easiest way to install **toby-node** is from [NPM](https://npmjs.org). You c
 the command below to instally the library:
 
 ```bash
-npm install toby-node-client
+npm install toby
 ```
 
 Or you can [clone the source code](https://github.com/toby-cloud/toby-node.git) for **toby-node**,
@@ -37,7 +37,7 @@ Try connecting to Toby with your user bot, like this:
 var botId = '{{ username }}'; // Your username from toby.cloud
 var secret = '{{ password }}'; // Your password from toby.cloud
 
-var toby = require('toby-node-client');
+var toby = require('toby');
 
 // the callback to be executed when connected
 function onConnect() {

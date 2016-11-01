@@ -1,6 +1,6 @@
 {
   "name": "toby",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A node.js Toby helper library.",
   "main": "index.js",
   "scripts": {
