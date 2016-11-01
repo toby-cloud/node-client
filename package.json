@@ -1,7 +1,7 @@
 {
-  "name": "toby-node",
+  "name": "toby",
   "version": "1.0.7",
-  "description": "Toby Node.js client",
+  "description": "A node.js Toby helper library.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
