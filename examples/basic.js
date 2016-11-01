@@ -27,13 +27,13 @@ function onConnect() {
     toby.send({
       message: "Hello world!",
       messageType: "TEXT",
-      tags: ["example"],
+      tags: [],
       ackTag: "ackTag"
     });
   }, 3000);
 }
 
-function onMessage() {
+function onMessage(from, message) {
   console.log(from,JSON.stringify(message));
 }
 
@@ -41,6 +41,6 @@ var toby = new toby.Bot(botId, secret, onConnect, onMessage);
 
 toby.start();
 
-setTimeout(function() {
-  toby.end();
-}, 30000);
+//setTimeout(function() {
+//  toby.end();
+//}, 60000); 

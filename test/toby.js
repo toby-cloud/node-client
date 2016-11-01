@@ -1,7 +1,7 @@
 
 const
-	expect = require("chai").expect,
-	should = require("chai").should,
+  expect = require("chai").expect,
+  should = require("chai").should,
   request = require('request'),
   toby = require("../lib/bot.js");
 

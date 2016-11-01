@@ -1,9 +1,10 @@
 {
-  "name": "toby-node-client",
-  "version": "1.0.6",
+  "name": "toby-node",
+  "version": "1.0.7",
   "description": "Toby Node.js client",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "./node_modules/mocha/bin/mocha test"
   },
   "repository": {
