@@ -3,7 +3,7 @@
 
 > A node.js Toby helper library.
 
-[![NPM](https://nodei.co/npm/toby.png)](https://nodei.co/npm/toby/)
+[![npm version](https://badge.fury.io/js/toby.svg)](https://badge.fury.io/js/toby)
 
 ## Installation
 
