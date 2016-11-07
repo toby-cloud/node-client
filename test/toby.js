@@ -3,7 +3,7 @@ const
   expect = require("chai").expect,
   should = require("chai").should,
   request = require('request'),
-  toby = require("../lib/bot.js");
+  toby = require("../lib/toby.js");
 
 
 var botId = process.argv[3];
@@ -16,6 +16,4 @@ if (!(botId && secret)) {
 
 describe("Bot tests", function() {
 
-
-
-})
+});
