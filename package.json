@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "./node_modules/mocha/bin/mocha test"
+    "test": "./node_modules/mocha/bin/mocha test fakeBotId fakeBotSk"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
   "homepage": "https://bitbucket.org/gafo/toby-node-client",
   "dependencies": {
     "mqtt": "^1.14.1",
-    "random-id": "0.0.2"
+    "random-id": "0.0.2",
+    "request": "^2.78.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

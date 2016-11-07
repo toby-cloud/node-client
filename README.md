@@ -1,9 +1,5 @@
 
-# toby-node
-
-> A node.js Toby helper library.
-
-[![npm version](https://badge.fury.io/js/toby.svg)](https://badge.fury.io/js/toby)
+[![npm version](https://badge.fury.io/js/toby.svg)](https://badge.fury.io/js/toby) [![Build Status](https://travis-ci.org/toby-cloud/toby-node.svg?branch=master)](https://travis-ci.org/toby-cloud/toby-node)
 
 ## Installation
 
