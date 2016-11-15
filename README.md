@@ -1,9 +1,5 @@
 
-# toby-node
-
-> A node.js Toby helper library.
-
-[![npm version](https://badge.fury.io/js/toby.svg)](https://badge.fury.io/js/toby)
+[![npm version](https://badge.fury.io/js/toby.svg)](https://badge.fury.io/js/toby) [![Build Status](https://travis-ci.org/toby-cloud/toby-node.svg?branch=master)](https://travis-ci.org/toby-cloud/toby-node)
 
 ## Installation
 
@@ -44,9 +40,14 @@ function onConnect() {
   console.log("Connected!");
 }
 
+// the callback to be executed when disconnected
+function onConnect() {
+  console.log("Disconnected!");
+}
+
 // the callback to be executed when message received
-function onMessage(from, message) {
-  console.log("message received:", from, message);
+function onMessage(message) {
+  console.log("message received:", message.toString());
 }
 
 var bot = new toby.Bot(botId, secret, onConnect, onMessage);

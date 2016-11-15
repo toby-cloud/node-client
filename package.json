@@ -1,25 +1,28 @@
 {
   "name": "toby",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "A node.js Toby helper library.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "./node_modules/mocha/bin/mocha test"
+    "test": "./node_modules/mocha/bin/mocha test testbot testbot",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test -- -R spec testbot testbot"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toby-cloud/toby-node"
   },
   "author": "Gabriel Garcia",
-  "license": "ISC",
+  "license": "",
   "homepage": "https://bitbucket.org/gafo/toby-node-client",
   "dependencies": {
     "mqtt": "^1.14.1",
-    "random-id": "0.0.2"
+    "random-id": "0.0.2",
+    "request": "^2.78.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "supertest": "^2.0.1"
   }
