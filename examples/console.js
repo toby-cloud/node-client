@@ -15,8 +15,8 @@
 //
 
 var toby = require('../lib/toby.js');
-var findHashtags = require('../lib/hashtag.js').findHashtags;
-var removeHashtags = require('../lib/hashtag.js').removeHashtags;
+var findHashtags = require('../lib/helpers.js').findHashtags;
+var removeHashtags = require('../lib/helpers.js').removeHashtags;
 
 var botId = process.argv[2];
 var secret = process.argv[3];
@@ -29,32 +29,25 @@ if (!(botId && secret)) {
 // we successfully connected
 function on_connect() {
   console.log("connected!");
-  bot.follow([botId], function() {
-    console.log("followed" + botId)
-  });
+  //bot.follow([botId], function() {
+  //  console.log("followed" + botId)
+  //});
 
   startPrompt();
 }
 
-// we received a message with a tag we are subscribed to
-function on_message(from, message) {
-  if (from == "@hook") {
-    process.stdout.write("\b\b\b\b" + from + " " + JSON.stringify(message) + "\n>>> ");
-  } else {
-    process.stdout.write("\b\b\b\b" + from + " " + message.message + "\n>>> ");
-  }
+function on_disconnect() {
 
-  if (message.ackTag) {
-    var payload = {
-      message: "I received your message: " + message.message,
-      messageType: "TEXT",
-      tags: [message.ackTag],
-    }
-    //bot.send(payload);
-  }
 }
 
-var bot = new toby.Bot(botId, secret, on_connect, on_message);
+// we received a message with a tag we are subscribed to
+function on_message(message) {
+
+  process.stdout.write("\b\b\b\breceived >>> " + message.toString() + "\n>>> ");
+
+}
+
+var bot = new toby.Bot(botId, secret, on_connect, on_disconnect, on_message);
 bot.start();
 
 function startPrompt() {
@@ -66,14 +59,11 @@ function startPrompt() {
     var str = d.toString().trim();
 
     if (str) {
-		    var payload = {
-			   message: removeHashtags(str),
-			   messageType: "TEXT",
-			   tags: findHashtags(str),
-               ackTag: botId
+		  var payload = {
+			 message: removeHashtags(str),
 		  }
-
-      bot.send(payload);
+      console.log(findHashtags(str));
+      bot.send(payload, findHashtags(str), botId);
     }
     process.stdout.write(">>> ");
   });

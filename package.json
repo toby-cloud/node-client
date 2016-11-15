@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "./node_modules/mocha/bin/mocha test fakeBotId fakeBotSk"
+    "test": "./node_modules/mocha/bin/mocha test testbot testbot",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test -- -R spec testbot testbot"
+
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "supertest": "^2.0.1"
   }
