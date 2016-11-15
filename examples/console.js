@@ -29,22 +29,18 @@ if (!(botId && secret)) {
 // we successfully connected
 function on_connect() {
   console.log("connected!");
-  //bot.follow([botId], function() {
-  //  console.log("followed" + botId)
-  //});
-
+  bot.follow([botId]);
   startPrompt();
 }
 
 function on_disconnect() {
-
+  console.log("disconnected");
+  process.exit(1);
 }
 
 // we received a message with a tag we are subscribed to
 function on_message(message) {
-
   process.stdout.write("\b\b\b\breceived >>> " + message.toString() + "\n>>> ");
-
 }
 
 var bot = new toby.Bot(botId, secret, on_connect, on_disconnect, on_message);
@@ -62,7 +58,6 @@ function startPrompt() {
 		  var payload = {
 			 message: removeHashtags(str),
 		  }
-      console.log(findHashtags(str));
       bot.send(payload, findHashtags(str), botId);
     }
     process.stdout.write(">>> ");
