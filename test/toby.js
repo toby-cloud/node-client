@@ -379,6 +379,4 @@ describe("Bot tests", function() {
     userbot.start();
 
   });
-
-
 });
