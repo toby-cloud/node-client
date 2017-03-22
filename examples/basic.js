@@ -22,16 +22,16 @@ if (!(id && sk)) {
 
 function onConnect() {
   console.log("connected!");
-  toby.info("info");
-  //toby.send({"hello":"world"}, [], "asdf");
-  //toby.follow(["asdf"], "follow");
-  //toby.follow(["asdf"], "unfollow");
-  //toby.createBot("gbot2", "gbot2", "asdf");
-  //toby.removeBot("gbot2", "gbot2");
-  //toby.createSocket(false, "asdf");
-  //toby.removeSocket("AKEyMqSz", "asdf");
-  //toby.hooksOn("SeCuRe", "asdf");
-  //toby.hooksOff("asdf");
+  bot.info("info");
+  bot.send({"hello":"world"}, [], "asdf");
+  //bot.follow(["asdf"], "follow");
+  //bot.follow(["asdf"], "unfollow");
+  //bot.createBot("gbot2", "gbot2", "asdf");
+  //bot.removeBot("gbot2", "gbot2");
+  //bot.createSocket(false, "asdf");
+  //bot.removeSocket("AKEyMqSz", "asdf");
+  //bot.hooksOn("SeCuRe", "asdf");
+  //bot.hooksOff("asdf");
 }
 
 function onDisconnect() {
@@ -52,7 +52,12 @@ function onMessage(message) {
       if (payload.status == 200) console.log("Unsubscription successful.");
       else console.log("Unsubscription failed.");
       break;
+    default:
+      if ('message' in payload) {
+        console.log("@" + message.getFrom() + ": " + payload['message']);
+          bot.send({"message":"hello world"}, [], "asdf");
 
+      }
   }
 }
 

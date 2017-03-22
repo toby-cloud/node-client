@@ -5,7 +5,7 @@ const
   request = require('request'),
   toby = require("../lib/toby.js");
 
-URL = "http://104.196.223.85:8080";
+URL = "https://toby.cloud";
 
 var botId = process.argv[process.argv.length-2];
 var secret = process.argv[process.argv.length-1];
@@ -23,11 +23,19 @@ describe("Bot tests", function() {
   var testbot, testbotId = "testbot" + String(Date.now()), testbotSk = "sUpErsEcUrE";
   var socketbot, socketbotId, socketbotSk;
 
+  beforeEach(function() {
+    if (userbot) userbot.stop();
+    if (testbot) testbot.stop();
+    if (socketbot) socketbot.stop();
+  });
+
   it("connects to broker", function (done) {
 
     var onConnect = function() {
       userbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
 
     var onDisconnect = function () {}
@@ -51,7 +59,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["info"]);
       expect(message.getPayload()["type"]).to.equal("user");
       userbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     var userbot = new toby.Bot(userbotId, userbotSk, onConnect, onDisconnect, onMessage);
     userbot.start();
@@ -72,7 +82,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["created"]);
       expect(message.getPayload()["status"]).to.equal(200);
       userbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     var userbot = new toby.Bot(userbotId, userbotSk, onConnect, onDisconnect, onMessage);
     userbot.start();
@@ -112,7 +124,9 @@ describe("Bot tests", function() {
         expect(message.getTags()).to.deep.equal([]);
         expect(message.getPayload()).to.deep.equal({offline: testbotId});
         userbot.stop();
-        done();
+        setTimeout(function() {
+          done();
+        },300);
       }
 
     }
@@ -137,7 +151,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["standard info"]);
       expect(message.getPayload()["subscriptions"]).to.deep.equal([]);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -157,7 +173,9 @@ describe("Bot tests", function() {
         expect(message.getTags()).to.deep.equal(["followed"]);
         expect(message.getPayload()["status"]).to.equal(200);
         testbot.stop();
-        done();
+        setTimeout(function() {
+          done();
+        },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -177,7 +195,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["standard"]);
       expect(message.getPayload()["subscriptions"]).to.deep.equal(["standard2", "standard1"]);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -197,7 +217,9 @@ describe("Bot tests", function() {
         expect(message.getTags()).to.deep.equal(["unfollowed"]);
         expect(message.getPayload()["status"]).to.equal(200);
         testbot.stop();
-        done();
+        setTimeout(function() {
+          done();
+        },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -217,7 +239,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["standard"]);
       expect(message.getPayload()["subscriptions"]).to.deep.equal(["standard2"]);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -236,7 +260,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["hooks on"]);
       expect(message.getPayload()["status"]).to.equal(200);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -261,7 +287,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal([]);
       expect(message.getPayload()).to.deep.equal({hello: "world"});
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -280,7 +308,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["hooks off"]);
       expect(message.getPayload()["status"]).to.equal(200);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -300,7 +330,9 @@ describe("Bot tests", function() {
       socketbotId = message.getPayload()["id"];
       socketbotSk = message.getPayload()["sk"];
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -330,7 +362,9 @@ describe("Bot tests", function() {
         expect(message.getTags()).to.deep.equal([]);
         expect(message.getPayload()).to.deep.equal({offline: socketbotId});
         testbot.stop();
-        done();
+        setTimeout(function() {
+          done();
+        },300);
       }
     }
 
@@ -352,7 +386,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["removed"]);
       expect(message.getPayload()["status"]).to.equal(200);
       testbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     testbot = new toby.Bot(testbotId, testbotSk, onConnect, onDisconnect, onMessage);
     testbot.start();
@@ -373,7 +409,9 @@ describe("Bot tests", function() {
       expect(message.getTags()).to.deep.equal(["removed"]);
       expect(message.getPayload()["status"]).to.equal(200);
       userbot.stop();
-      done();
+      setTimeout(function() {
+        done();
+      },300);
     }
     userbot = new toby.Bot(userbotId, userbotSk, onConnect, onDisconnect, onMessage);
     userbot.start();
