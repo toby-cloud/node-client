@@ -41,7 +41,7 @@ function onConnect() {
 }
 
 // the callback to be executed when disconnected
-function onConnect() {
+function onDisconnect() {
   console.log("Disconnected!");
 }
 
@@ -50,6 +50,6 @@ function onMessage(message) {
   console.log("message received:", message.toString());
 }
 
-var bot = new toby.Bot(botId, secret, onConnect, onMessage);
+var bot = new toby.Bot(botId, secret, onConnect, onDisconnect, onMessage);
 bot.start();
 ```
